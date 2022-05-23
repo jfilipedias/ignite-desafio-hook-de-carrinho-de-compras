@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { MdAddShoppingCart } from 'react-icons/md';
 
 import { ProductList } from './styles';
@@ -45,8 +45,8 @@ const Home = (): JSX.Element => {
     loadProducts();
   }, []);
 
-  async function handleAddProduct(id: number) {
-    await addProduct(id);
+  function handleAddProduct(id: number) {
+    addProduct(id);
   }
 
   return (
