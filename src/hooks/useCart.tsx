@@ -58,6 +58,12 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
   const removeProduct = (productId: number) => {
     try {
+      const product = cart.find((product) => product.id === productId);
+
+      if (!product) {
+        throw Error();
+      }
+
       const newCart =
         cart.filter((product) => product.id !== productId);
 
@@ -81,11 +87,15 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
 
       if (productStock.amount < amount) {
         toast.error('Quantidade solicitada fora de estoque');
-        throw Error();
+        return;
       }
 
       const product =
         cart.find((product) => product.id === productId) as Product;
+
+      if (!product) {
+        throw Error();
+      }
 
       product.amount = amount;
 
