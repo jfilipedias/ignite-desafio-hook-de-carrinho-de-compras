@@ -39,12 +39,18 @@ const Cart = (): JSX.Element => {
       return sumTotal;
     }, 0);
 
-  function handleProductIncrement(product: Product) {
-    // TODO
+  async function handleProductIncrement(product: Product) {
+    await updateProductAmount({
+      productId: product.id,
+      amount: product.amount + 1
+    });
   }
 
-  function handleProductDecrement(product: Product) {
-    // TODO
+  async function handleProductDecrement(product: Product) {
+    await updateProductAmount({
+      productId: product.id,
+      amount: product.amount - 1
+    });
   }
 
   function handleRemoveProduct(productId: number) {
