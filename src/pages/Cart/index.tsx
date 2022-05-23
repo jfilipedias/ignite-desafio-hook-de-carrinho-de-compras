@@ -22,7 +22,8 @@ const Cart = (): JSX.Element => {
 
   const cartFormatted = cart.map(product => ({
     // TODO
-  }))
+  }));
+
   const total =
     formatPrice(
       cart.reduce((sumTotal, product) => {
@@ -39,7 +40,7 @@ const Cart = (): JSX.Element => {
   }
 
   function handleRemoveProduct(productId: number) {
-    // TODO
+    removeProduct(productId);
   }
 
   return (
